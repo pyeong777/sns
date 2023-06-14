@@ -5,7 +5,7 @@ import { Open_Sans } from "next/font/google";
 const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Wind",
+  title: "SNS",
   description: "Social Networking Service",
 };
 
@@ -16,11 +16,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={openSans.className}>
-      <body>
-        <header>
+      <body className="w-full mx-auto overflow-auto">
+        <header className="sticky top-0 z-10 bg-white border-b">
           <NavBar />
         </header>
-        <main>{children}</main>
+        <main className="w-full max-w-screen-xl px-6 mx-auto overflow-auto">
+          {children}
+        </main>
       </body>
     </html>
   );
