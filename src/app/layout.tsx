@@ -6,7 +6,7 @@ import { AuthContext } from "./../context/AuthContext";
 const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "SNS",
+  title: "Mangoloco",
   description: "Social Networking Service",
 };
 
