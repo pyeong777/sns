@@ -2,6 +2,7 @@ import NavBar from "@/components/NavBar";
 import "./globals.css";
 import { Open_Sans } from "next/font/google";
 import { AuthContext } from "./../context/AuthContext";
+import { SWRConfigContext } from "@/context/SWRConfigContext";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({
             <NavBar />
           </header>
           <main className="w-full max-w-screen-xl px-6 mx-auto overflow-auto">
-            {children}
+            <SWRConfigContext>{children}</SWRConfigContext>
           </main>
         </AuthContext>
       </body>
