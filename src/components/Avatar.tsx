@@ -13,7 +13,7 @@ export default function Avatar({
     <div className={getContainerStyle(size, highlight)}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        className={`bg-white rounded-full p-[0.1rem] ${getImageSizeStyle(
+        className={`bg-white rounded-full object-cover p-[0.1rem] ${getImageSizeStyle(
           size
         )}`}
         alt="user profile"
@@ -29,11 +29,13 @@ function getContainerStyle(size: string, highlight: boolean): string {
   const highlightStyle = highlight
     ? "bg-gradient-to-bl from-emerald-400 to-amber-300"
     : "";
-  const sizeStyle = size === "small" ? "w-9 h-9" : "w-[60px] h-[60px]";
+  const sizeStyle = size === "small" ? "w-9 h-9" : "w-[68px] h-[68px]";
 
   return `${baseStyle} ${highlightStyle} ${sizeStyle}`;
 }
 
 function getImageSizeStyle(size: string): string {
-  return size === "small" ? "w-[34px] h-[34px] p-[0.1rem]" : "w-16 h-16";
+  return size === "small"
+    ? "w-[34px] h-[34px] p-[0.1rem]"
+    : "w-16 h-16 p-[0.2rem]";
 }
