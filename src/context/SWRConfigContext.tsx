@@ -8,7 +8,6 @@ type Props = {
 };
 
 export const SWRConfigContext = ({ children }: Props) => {
-  const url = "";
   return (
     <SWRConfig
       value={{
