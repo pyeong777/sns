@@ -4,7 +4,7 @@ import Image from "next/image";
 import HeartIcon from "./ui/icons/HeartIcon";
 import BookMarkIcon from "./ui/icons/BookMarkIcon";
 import { parseDate } from "@/util/date";
-import SmileIcon from "./ui/icons/SmileIcon";
+import Imagebar from "./ui/Imagebar";
 
 type Props = {
   post: SimplePost;
@@ -18,7 +18,7 @@ export default function PostListCard({ post }: Props) {
         <Avatar image={userImage} size="medium" />
         <span className="ml-2 font-bold text-gray-900">{username}</span>
       </div>
-      {images.map((image, index) => (
+      {/* {images.map((image, index) => (
         <Image
           className="object-cover w-full aspect-square"
           key={index}
@@ -27,7 +27,9 @@ export default function PostListCard({ post }: Props) {
           width={500}
           height={500}
         />
-      ))}
+      ))} */}
+      <Imagebar post={post} />
+
       <div className="flex justify-between px-4 my-2">
         <HeartIcon />
         <BookMarkIcon />
@@ -45,13 +47,16 @@ export default function PostListCard({ post }: Props) {
         <p className="my-2 text-xs text-neutral-500">
           {parseDate(createdAt, "ko")}
         </p>
-        <form action="" className="flex border-t border-neutral-300">
+        <form
+          action=""
+          className="flex items-center py-2 border-t border-neutral-300"
+        >
           <input
-            className="w-full border-none outline-none"
+            className="border-none outline-none basis-11/12"
             type="text"
             placeholder="댓글 달기..."
           />
-          <button className="ml-2 font-bold">게시</button>
+          <button className="text-sm font-bold basis-1/12">게시</button>
         </form>
       </div>
     </article>

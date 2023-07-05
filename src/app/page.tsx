@@ -12,7 +12,7 @@ export default async function Home() {
     redirect("/signin");
   }
   return (
-    <section className="w-full flex flex-col sm:flex-row max-w-[850px] p-4 mx-auto">
+    <section className="w-full flex flex-col sm:flex-row max-w-[850px] sm:p-4 mx-auto">
       <div className="w-full min-w-0 basis-3/4">
         <FollowingBar />
         <PostList />
