@@ -18,6 +18,7 @@ export default function Scrollbar({ children }: { children: React.ReactNode }) {
       containerClass="flex w-full gap-2"
       responsive={responsive}
       itemClass="mx-1"
+      arrows={false}
     >
       {children}
     </Carousel>

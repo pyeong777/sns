@@ -22,17 +22,32 @@ export default function Imagebar({ post }: Props) {
   const { username, images } = post;
 
   return (
-    <Carousel responsive={responsive} showDots={true} arrows={false}>
-      {images.map((image, index) => (
-        <Image
-          className="object-cover w-full aspect-square"
-          key={index}
-          src={image}
-          alt={`photo by ${username}`}
-          width={500}
-          height={500}
-        />
-      ))}
-    </Carousel>
+    <>
+      {images.length > 1 ? (
+        <Carousel responsive={responsive} showDots={true} arrows={false}>
+          {images.map((image, index) => (
+            <Image
+              className="object-cover w-full aspect-square"
+              key={index}
+              src={image}
+              alt={`photo by ${username}`}
+              width={500}
+              height={500}
+            />
+          ))}
+        </Carousel>
+      ) : (
+        images.map((image, index) => (
+          <Image
+            className="object-cover w-full aspect-square"
+            key={index}
+            src={image}
+            alt={`photo by ${username}`}
+            width={500}
+            height={500}
+          />
+        ))
+      )}
+    </>
   );
 }
