@@ -1,10 +1,10 @@
 import { SimplePost } from "@/model/post";
 import Avatar from "./Avatar";
-import Image from "next/image";
 import HeartIcon from "./ui/icons/HeartIcon";
 import BookMarkIcon from "./ui/icons/BookMarkIcon";
 import { parseDate } from "@/util/date";
 import Imagebar from "./ui/Imagebar";
+import CommentForm from "./CommentForm";
 
 type Props = {
   post: SimplePost;
@@ -38,17 +38,7 @@ export default function PostListCard({ post }: Props) {
         <p className="my-2 text-xs text-neutral-500">
           {parseDate(createdAt, "ko")}
         </p>
-        <form
-          action=""
-          className="flex items-center py-2 border-t border-neutral-300"
-        >
-          <input
-            className="border-none outline-none basis-11/12"
-            type="text"
-            placeholder="댓글 달기..."
-          />
-          <button className="text-sm font-bold basis-1/12">게시</button>
-        </form>
+        <CommentForm />
       </div>
     </article>
   );
