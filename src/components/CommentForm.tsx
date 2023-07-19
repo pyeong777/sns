@@ -1,6 +1,6 @@
 export default function CommentForm() {
   return (
-    <form className="flex items-center py-2 border-t border-neutral-300">
+    <form className="flex items-center px-3 py-2 border-t border-neutral-300">
       <input
         className="border-none outline-none basis-11/12"
         type="text"
