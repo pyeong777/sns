@@ -1,4 +1,3 @@
-import { SimplePost } from "@/model/post";
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -15,12 +14,16 @@ const responsive = {
 };
 
 type Props = {
-  post: SimplePost;
+  username: string;
+  images: string[];
+  priority?: boolean;
 };
 
-export default function Imagebar({ post }: Props) {
-  const { username, images } = post;
-
+export default function Imagebar({
+  username,
+  images,
+  priority = false,
+}: Props) {
   return (
     <>
       {images.length > 1 ? (
@@ -33,6 +36,7 @@ export default function Imagebar({ post }: Props) {
               alt={`photo by ${username}`}
               width={500}
               height={500}
+              priority={priority}
             />
           ))}
         </Carousel>
@@ -45,6 +49,7 @@ export default function Imagebar({ post }: Props) {
             alt={`photo by ${username}`}
             width={500}
             height={500}
+            priority={priority}
           />
         ))
       )}
