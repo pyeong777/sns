@@ -12,7 +12,7 @@ export type FullPost = {
   id: string;
   username: string;
   userImage: string;
-  images: string[];
+  image: string;
   text: string;
   createdAt: string;
   likes: string[];

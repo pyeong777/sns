@@ -5,7 +5,7 @@ const simplePostProjection = `
     ...,
     "username": author->username,
     "userImage": author->image,
-    "images": images,
+    "image": photo,
     "likes": likes[]->username,
     "text": comments[0].comment,
     "comments": count(comments),
@@ -22,7 +22,7 @@ export async function getFollowingPostOf(username: string) {
     .then((posts) =>
       posts.map((post: SimplePost) => ({
         ...post,
-        images: urlFor(post.images),
+        image: urlFor(post.image),
       }))
     );
 }

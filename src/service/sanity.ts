@@ -1,6 +1,6 @@
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
-// import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 export const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -12,6 +12,6 @@ export const client = createClient({
 
 const builder = imageUrlBuilder(client);
 
-export function urlFor(source: string[]) {
-  return source.map((item) => builder.image(item).width(800).url());
+export function urlFor(source: SanityImageSource) {
+  return builder.image(source).width(800).url();
 }
