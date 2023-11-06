@@ -3,12 +3,16 @@ import "./globals.css";
 import { Open_Sans } from "next/font/google";
 import { AuthContext } from "./../context/AuthContext";
 import { SWRConfigContext } from "@/context/SWRConfigContext";
+import { Metadata } from "next";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Mangoloco",
-  description: "Social Networking Service",
+export const metadata: Metadata = {
+  title: {
+    default: "Mangoloco",
+    template: "Mangoloco | %s",
+  },
+  description: "망고로코",
 };
 
 export default function RootLayout({

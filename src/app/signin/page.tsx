@@ -3,6 +3,12 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { getProviders } from "next-auth/react";
 import Signin from "@/components/Signin";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "로그인",
+  description: "로그인 또는 회원가입",
+};
 
 type Props = {
   searchParams: {
