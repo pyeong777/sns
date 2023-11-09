@@ -1,12 +1,11 @@
 "use client";
 
-import { SimplePost } from "@/model/post";
-import useSWR from "swr";
 import PostListCard from "./PostListCard";
 import GridSpinner from "./ui/GridSpinner";
+import usePosts from "@/hooks/post";
 
 export default function PostList() {
-  const { data, isLoading } = useSWR<SimplePost[]>("/api/posts");
+  const { posts, isLoading } = usePosts();
   return (
     <section>
       {isLoading && (
@@ -14,9 +13,9 @@ export default function PostList() {
           <GridSpinner color="black" />
         </div>
       )}
-      {data && (
+      {posts && (
         <ul>
-          {data.map((post, index) => (
+          {posts.map((post, index) => (
             <li key={post.id} className="mb-4">
               <PostListCard post={post} priority={index < 2} />
             </li>
