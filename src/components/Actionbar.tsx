@@ -1,7 +1,6 @@
 "use client";
 
 import { parseDate } from "@/util/date";
-import { useState } from "react";
 import ToggleButton from "./ui/ToggleButton";
 import HeartIcon from "./ui/icons/HeartIcon";
 import BookMarkIcon from "./ui/icons/BookMarkIcon";
@@ -13,10 +12,11 @@ import useMe from "@/hooks/me";
 
 type Props = {
   post: SimplePost;
+  children?: React.ReactNode;
 };
 
-export default function Actionbar({ post }: Props) {
-  const { id, likes, username, text, createdAt } = post;
+export default function Actionbar({ post, children }: Props) {
+  const { id, likes, createdAt } = post;
   // const { data: session } = useSession();
   // const user = session?.user;
   const { user, setBookMark } = useMe();
@@ -53,14 +53,7 @@ export default function Actionbar({ post }: Props) {
         <p className="mb-2 text-sm font-bold sm:text-base">{`좋아요 ${
           likes?.length ?? 0
         }개`}</p>
-        {text && (
-          <p>
-            <span className="mr-1 text-sm font-bold sm:text-base">
-              {username}
-            </span>
-            <span>{text}</span>
-          </p>
-        )}
+        {children}
         <p className="my-2 text-xs text-neutral-500">
           {parseDate(createdAt, "ko")}
         </p>
