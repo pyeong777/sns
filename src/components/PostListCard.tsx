@@ -10,6 +10,7 @@ import PostModal from "./PostModal";
 import Image from "next/image";
 import PostDetail from "./PostDetail";
 import PostUserAvatar from "./PostUserAvatar";
+import usePosts from "@/hooks/post";
 
 type Props = {
   post: SimplePost;
@@ -19,6 +20,11 @@ type Props = {
 export default function PostListCard({ post, priority = false }: Props) {
   const { userImage, username, image, comments, text } = post;
   const [openModal, setOpenModal] = useState(false);
+
+  const { postComment } = usePosts();
+  const handlePostComment = (comment: string) => {
+    postComment(post, comment);
+  };
   return (
     <article className="border border-gray-200 rounded-lg shadow-md">
       <PostUserAvatar image={userImage} username={username} />
@@ -41,10 +47,10 @@ export default function PostListCard({ post, priority = false }: Props) {
           <button
             className="my-2 text-neutral-500"
             onClick={() => setOpenModal(true)}
-          >{`댓글 ${comments}개 모두보기`}</button>
+          >{`댓글 ${comments - 1}개 모두보기`}</button>
         )}
       </Actionbar>
-      <CommentForm />
+      <CommentForm onPostComment={handlePostComment} />
       {openModal && (
         <ModalPortal>
           <PostModal onClose={() => setOpenModal(false)}>
