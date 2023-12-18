@@ -5,6 +5,8 @@ import PostUserAvatar from "./PostUserAvatar";
 import Actionbar from "./Actionbar";
 import CommentForm from "./CommentForm";
 import Avatar from "./Avatar";
+import useFullPost from "@/hooks/postDetail";
+import useMe from "@/hooks/me";
 
 type Props = {
   post: SimplePost;
@@ -12,8 +14,14 @@ type Props = {
 
 export default function PostDetail({ post }: Props) {
   const { id, userImage, username, image, createdAt, likes } = post;
-  const { data } = useSWR<FullPost>(`/api/posts/${id}`);
+  const { post: data, postComment } = useFullPost(id);
+  const { user } = useMe();
   const comments = data?.comments;
+
+  const handlePostComment = (comment: string) => {
+    user &&
+      postComment({ comment, username: user.username, image: user.image });
+  };
 
   return (
     <section className="flex w-full h-full">
@@ -49,7 +57,7 @@ export default function PostDetail({ post }: Props) {
         </ul>
 
         <Actionbar post={post} />
-        <CommentForm />
+        <CommentForm onPostComment={handlePostComment} />
       </div>
     </section>
   );
